@@ -28,8 +28,13 @@ $logout = function (Logout $logout) {
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @can('viewAny',\App\Models\Category::class)
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" wire:navigate>
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.*')" wire:navigate>
                         Categorias
+                    </x-nav-link>
+                    @endcan
+                    @can('viewAny',\App\Models\Author::class)
+                    <x-nav-link :href="route('author.index')" :active="request()->routeIs('author.*')" wire:navigate>
+                        Autores
                     </x-nav-link>
                     @endcan
                 </div>
