@@ -73,6 +73,7 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        Gate::authorize('delete', $author);
         $author->delete();
 
         return response()->noContent();

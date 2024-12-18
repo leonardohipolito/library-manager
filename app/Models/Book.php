@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/** @package App\Models */
 class Book extends Model
 {
     /** @use HasFactory<\Database\Factories\BookFactory> */
@@ -15,16 +14,15 @@ class Book extends Model
 
     protected $fillable = [
         'name',
-        'status'
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
-            'status' => BookStatus::class
+            'status' => BookStatus::class,
         ];
     }
-
 
     /** @return BelongsTo<Author, Book>  */
     public function author(): BelongsTo

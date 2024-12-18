@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Book;
+use App\Models\Loan;
 use App\Models\User;
 
-class BookPolicy
+class LoanPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -18,7 +18,7 @@ class BookPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Book $book): bool
+    public function view(User $user, Loan $loan): bool
     {
         return $user->isInternalMember();
     }
@@ -34,7 +34,7 @@ class BookPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Book $book): bool
+    public function update(User $user, Loan $loan): bool
     {
         return $user->isInternalMember();
     }
@@ -42,7 +42,7 @@ class BookPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Book $book): bool
+    public function delete(User $user, Loan $loan): bool
     {
         return $user->isInternalMember();
     }
@@ -50,7 +50,7 @@ class BookPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Book $book): bool
+    public function restore(User $user, Loan $loan): bool
     {
         return $user->isInternalMember();
     }
@@ -58,7 +58,7 @@ class BookPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Book $book): bool
+    public function forceDelete(User $user, Loan $loan): bool
     {
         return $user->isInternalMember();
     }

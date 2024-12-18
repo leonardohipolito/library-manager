@@ -42,6 +42,11 @@ $logout = function (Logout $logout) {
                         Livros
                     </x-nav-link>
                     @endcan
+                    @can('viewAny',\App\Models\Loan::class)
+                    <x-nav-link :href="route('loan.index')" :active="request()->routeIs('loan.*')" wire:navigate>
+                        Emprestimos
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 

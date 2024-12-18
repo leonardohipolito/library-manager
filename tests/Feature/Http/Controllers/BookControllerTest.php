@@ -64,7 +64,7 @@ it('update book', function () {
     assertDatabaseHas('books', $newData->toArray());
 });
 
-it('delete book',function(){
+it('delete book', function () {
     $user = admin();
     $book = Book::factory()->create();
     actingAs($user);

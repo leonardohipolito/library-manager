@@ -24,6 +24,8 @@ test('permissions', function () {
         ->assertForbidden();
     post(route('category.store'))
         ->assertForbidden();
+    delete(route('category.destroy', $category))
+        ->assertForbidden();
 });
 
 it('list categories', function () {

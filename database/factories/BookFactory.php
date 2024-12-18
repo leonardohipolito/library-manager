@@ -17,10 +17,10 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>$this->faker->name,
-            'author_id'=>\App\Models\Author::factory(),
-            'category_id'=>\App\Models\Category::factory(),
-            'status'=>\App\Enums\BookStatus::options()->keys()->random(),
+            'name' => $this->faker->name,
+            'author_id' => \App\Models\Author::factory(),
+            'category_id' => \App\Models\Category::factory(),
+            'status' => \App\Enums\BookStatus::options()->keys()->random(),
         ];
     }
 }

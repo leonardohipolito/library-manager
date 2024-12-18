@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Loan;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,9 @@ class DatabaseSeeder extends Seeder
             ->count(25)
             ->create();
         Book::factory()
+            ->count(100)
+            ->create();
+        Loan::factory()
             ->count(100)
             ->create();
     }

@@ -5,10 +5,11 @@ namespace App\Enums;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
 
-enum BookStatus implements Htmlable
+enum LoanStatus implements Htmlable
 {
-    case available;
     case borrowed;
+    case overdue;
+    case returned;
 
     public function toHtml()
     {
@@ -19,7 +20,8 @@ enum BookStatus implements Htmlable
     {
         return match ($this) {
             self::borrowed => 'Emprestado',
-            self::available => 'Disponível',
+            self::overdue => 'Atrasado',
+            self::returned => 'Devolvido'
         };
     }
 

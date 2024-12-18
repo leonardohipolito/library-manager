@@ -30,10 +30,10 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'author_id'=>'required|exists:authors,id',
-            'category_id'=>'required|exists:categories,id',
-            'status'=>['required',Rule::in(BookStatus::options()->keys()->toArray())],
+            'name' => 'required',
+            'author_id' => 'required|exists:authors,id',
+            'category_id' => 'required|exists:categories,id',
+            'status' => ['required', Rule::in(BookStatus::options()->keys()->toArray())],
         ];
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
@@ -16,9 +15,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        Gate::authorize('viewAny',Book::class);
-        $books = Book::latest()->with(['author','category'])->paginate(10);
-        return view('book.index',['books'=>$books]);
+        Gate::authorize('viewAny', Book::class);
+        $books = Book::latest()->with(['author', 'category'])->paginate(10);
+
+        return view('book.index', ['books' => $books]);
     }
 
     /**
@@ -26,11 +26,12 @@ class BookController extends Controller
      */
     public function create()
     {
-        Gate::authorize('create',Book::class);
-        $book = new Book();
-        $authors = Author::pluck('name','id');
-        $categories = Category::pluck('name','id');
-        return view('book.form',['book'=>$book,'authors'=>$authors,'categories'=>$categories]);
+        Gate::authorize('create', Book::class);
+        $book = new Book;
+        $authors = Author::pluck('name', 'id');
+        $categories = Category::pluck('name', 'id');
+
+        return view('book.form', ['book' => $book, 'authors' => $authors, 'categories' => $categories]);
     }
 
     /**
@@ -43,6 +44,7 @@ class BookController extends Controller
         $book->author()->associate($data['author_id']);
         $book->category()->associate($data['category_id']);
         $book->save();
+
         return redirect()->route('book.index');
     }
 
@@ -59,10 +61,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        Gate::authorize('update',$book);
-        $authors = Author::pluck('name','id');
-        $categories = Category::pluck('name','id');
-        return view('book.form',['book'=>$book,'authors'=>$authors,'categories'=>$categories]);
+        Gate::authorize('update', $book);
+        $authors = Author::pluck('name', 'id');
+        $categories = Category::pluck('name', 'id');
+
+        return view('book.form', ['book' => $book, 'authors' => $authors, 'categories' => $categories]);
     }
 
     /**
@@ -75,6 +78,7 @@ class BookController extends Controller
         $book->author()->associate($data['author_id']);
         $book->category()->associate($data['category_id']);
         $book->save();
+
         return redirect()->route('book.index');
 
     }
@@ -84,8 +88,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        Gate::authorize('delete',$book);
+        Gate::authorize('delete', $book);
         $book->delete();
+
         return response()->noContent();
     }
 }

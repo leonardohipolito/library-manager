@@ -24,6 +24,8 @@ test('permissions', function () {
         ->assertForbidden();
     post(route('author.store'))
         ->assertForbidden();
+    delete(route('author.destroy', $author))
+        ->assertForbidden();
 });
 
 it('list authors', function () {
