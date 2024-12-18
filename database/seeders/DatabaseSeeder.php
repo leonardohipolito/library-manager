@@ -24,13 +24,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
         Category::factory()
-            ->count(50)
+            ->count(5)
             ->create();
         Author::factory()
-            ->count(25)
+            ->count(20)
             ->create();
         Book::factory()
-            ->count(100)
+            ->count(10)
             ->create();
         Loan::factory()
             ->count(100)
