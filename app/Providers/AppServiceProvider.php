@@ -31,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Category::class, CategoryPolicy::class);
         Gate::policy(Author::class, AuthorPolicy::class);
         Gate::policy(Loan::class, LoanPolicy::class);
-        Gate::policy(User::class,UserPolicy::class);
+        Gate::policy(User::class, UserPolicy::class);
     }
 }

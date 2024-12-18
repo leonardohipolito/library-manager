@@ -53,8 +53,8 @@ class User extends Authenticatable
     }
 
     /** @return HasMany<Loan, User>  */
-    public function loans():HasMany
+    public function loans(): HasMany
     {
-        return $this->hasMany(Loan::class,'borrower_id');
+        return $this->hasMany(Loan::class, 'borrower_id');
     }
 }

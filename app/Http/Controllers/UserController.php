@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Hash;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
@@ -20,6 +19,7 @@ class UserController extends Controller
         $users = User::latest()
             ->withCount('loans')
             ->paginate(10);
+
         return view('user.index', compact('users'));
     }
 
@@ -29,7 +29,8 @@ class UserController extends Controller
     public function create()
     {
         Gate::authorize('create', User::class);
-        $user = new User();
+        $user = new User;
+
         return view('user.form', compact('user'));
     }
 
@@ -41,6 +42,7 @@ class UserController extends Controller
         $data = $request->validated();
         $data['password'] = Hash::make(Str::random(8));
         User::create($data);
+
         return redirect()->route('user.index');
     }
 
@@ -58,6 +60,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         Gate::authorize('update', $user);
+
         return view('user.form', compact('user'));
     }
 
@@ -69,6 +72,7 @@ class UserController extends Controller
         Gate::authorize('update', $user);
         $data = $request->validated();
         $user->update($data);
+
         return redirect()->route('user.index');
     }
 
@@ -79,6 +83,7 @@ class UserController extends Controller
     {
         Gate::authorize('delete', $user);
         $user->delete();
+
         return response()->noContent();
     }
 }

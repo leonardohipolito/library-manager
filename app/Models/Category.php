@@ -16,9 +16,8 @@ class Category extends Model
     ];
 
     /** @return HasMany<Book, Category>  */
-    public function books():HasMany
+    public function books(): HasMany
     {
         return $this->hasMany(Book::class);
     }
-
 }

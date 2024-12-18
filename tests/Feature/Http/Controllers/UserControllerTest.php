@@ -60,7 +60,7 @@ it('update user', function () {
     ]);
 });
 
-it('delete user',function () {
+it('delete user', function () {
     $admin = admin();
     actingAs($admin);
     $user = User::factory()->create();
@@ -70,7 +70,7 @@ it('delete user',function () {
         'id' => $user->id,
     ]);
 });
-it('fail on self delete',function () {
+it('fail on self delete', function () {
     $admin = admin();
     actingAs($admin);
     $user = $admin;

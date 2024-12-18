@@ -16,7 +16,8 @@ class Author extends Model
     ];
 
     /** @return HasMany<Book, Author>  */
-    public function books():HasMany{
+    public function books(): HasMany
+    {
         return $this->hasMany(Book::class);
     }
 }
