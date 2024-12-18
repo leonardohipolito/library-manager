@@ -13,9 +13,10 @@ class AuthorRequest extends FormRequest
     public function authorize(): bool
     {
         $author = $this->route('author');
-        if (!$author) {
+        if (! $author) {
             return $this->user()->can('create', Author::class);
         }
+
         return $this->user()->can('update', $author);
     }
 
@@ -27,7 +28,7 @@ class AuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required'
+            'name' => 'required',
         ];
     }
 }

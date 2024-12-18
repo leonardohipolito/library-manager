@@ -20,7 +20,7 @@ test('permissions', function () {
         ->assertForbidden();
     get(route('author.create'))
         ->assertForbidden();
-    get(route('author.edit',$author))
+    get(route('author.edit', $author))
         ->assertForbidden();
     post(route('author.store'))
         ->assertForbidden();

@@ -20,7 +20,7 @@ test('permissions', function () {
         ->assertForbidden();
     get(route('category.create'))
         ->assertForbidden();
-    get(route('category.edit',$category))
+    get(route('category.edit', $category))
         ->assertForbidden();
     post(route('category.store'))
         ->assertForbidden();

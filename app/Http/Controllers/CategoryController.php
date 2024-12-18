@@ -25,6 +25,7 @@ class CategoryController extends Controller
     public function create()
     {
         Gate::authorize('create', Category::class);
+
         return view('category.form', ['category' => Category::make()]);
     }
 
@@ -52,6 +53,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         Gate::authorize('update', $category);
+
         return view('category.form', ['category' => $category]);
     }
 

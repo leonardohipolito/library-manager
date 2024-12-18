@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class AuthorController extends Controller
@@ -16,6 +15,7 @@ class AuthorController extends Controller
     {
         Gate::authorize('viewAny', Author::class);
         $authors = Author::latest()->paginate(10);
+
         return view('author.index', ['authors' => $authors]);
     }
 
@@ -25,7 +25,8 @@ class AuthorController extends Controller
     public function create()
     {
         Gate::authorize('create', Author::class);
-        $author = new Author();
+        $author = new Author;
+
         return view('author.form', ['author' => $author]);
     }
 
@@ -35,6 +36,7 @@ class AuthorController extends Controller
     public function store(AuthorRequest $request)
     {
         Author::create($request->validated());
+
         return redirect()->route('author.index');
     }
 
@@ -52,6 +54,7 @@ class AuthorController extends Controller
     public function edit(Author $author)
     {
         Gate::authorize('update', $author);
+
         return view('author.form', ['author' => $author]);
     }
 
@@ -61,6 +64,7 @@ class AuthorController extends Controller
     public function update(AuthorRequest $request, Author $author)
     {
         $author->update($request->validated());
+
         return redirect()->route('author.index');
     }
 
@@ -70,6 +74,7 @@ class AuthorController extends Controller
     public function destroy(Author $author)
     {
         $author->delete();
+
         return response()->noContent();
     }
 }
