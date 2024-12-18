@@ -14,7 +14,7 @@ class AuthorController extends Controller
     public function index()
     {
         Gate::authorize('viewAny', Author::class);
-        $authors = Author::latest()->paginate(10);
+        $authors = Author::latest()->withCount(['books'])->paginate(10);
 
         return view('author.index', ['authors' => $authors]);
     }

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         Gate::authorize('viewAny', Category::class);
-        $categories = Category::latest()->paginate(10);
+        $categories = Category::latest()->withCount(['books'])->paginate(10);
 
         return view('category.index', ['categories' => $categories]);
     }
