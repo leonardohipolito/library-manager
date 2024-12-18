@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isInternalMember(): bool
+    {
+        return $this->email === 'test@example.com';
+    }
 }

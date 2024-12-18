@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\User;
+
 pest()->extend(Tests\TestCase::class)
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
@@ -41,7 +43,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function admin(): User
 {
-    // ..
+    return User::factory()->create([
+        'email' => 'test@example.com',
+    ]);
 }

@@ -13,3 +13,9 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::middleware([
+    'auth',
+])->group(function () {
+    Route::resource('category', \App\Http\Controllers\CategoryController::class);
+});
