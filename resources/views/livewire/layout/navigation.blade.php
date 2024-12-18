@@ -37,6 +37,11 @@ $logout = function (Logout $logout) {
                         Autores
                     </x-nav-link>
                     @endcan
+                    @can('viewAny',\App\Models\Book::class)
+                    <x-nav-link :href="route('book.index')" :active="request()->routeIs('book.*')" wire:navigate>
+                        Livros
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
