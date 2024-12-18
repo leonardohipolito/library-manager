@@ -21,4 +21,5 @@ Route::middleware([
     Route::resource('author', \App\Http\Controllers\AuthorController::class);
     Route::resource('book', \App\Http\Controllers\BookController::class);
     Route::resource('loan', \App\Http\Controllers\LoanController::class);
+    Route::resource('user', \App\Http\Controllers\UserController::class);
 });

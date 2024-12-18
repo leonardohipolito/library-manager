@@ -47,6 +47,11 @@ $logout = function (Logout $logout) {
                         Emprestimos
                     </x-nav-link>
                     @endcan
+                    @can('viewAny',\App\Models\User::class)
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.*')" wire:navigate>
+                        Usuários
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 

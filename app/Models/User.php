@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -49,5 +50,11 @@ class User extends Authenticatable
     public function isInternalMember(): bool
     {
         return $this->email === 'test@example.com';
+    }
+
+    /** @return HasMany<Loan, User>  */
+    public function loans():HasMany
+    {
+        return $this->hasMany(Loan::class,'borrower_id');
     }
 }
